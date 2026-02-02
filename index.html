@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Will you be my valentine</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Comic Sans MS', 'Segoe UI', cursive;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .card {
+      width: 560px;
+      min-height: 380px;
+      background: white;
+      border-radius: 22px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+      padding: 50px 40px;
+      position: relative;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      color: #ff3f6c;
+      margin-bottom: 80px;
+    }
+
+    button {
+      padding: 10px 26px;
+      font-size: 1.1rem;
+      border-radius: 40px;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+      transition: transform 0.2s ease, left 0.2s ease, top 0.2s ease;
+    }
+
+    #yesBtn {
+      background: #db3f63;
+      color: white;
+      left: 170px;
+      top: 240px;
+    }
+
+    #yesBtn:hover {
+      transform: scale(1.3);
+    }
+
+    #noBtn {
+      background: #f2f2f2;
+      color: #444;
+      left: 320px;
+      top: 240px;
+      pointer-events: none; /* NEVER clickable */
+    }
+
+    .gif-container {
+      display: none;
+      margin-top: 25px;
+    }
+
+    .gif-container img {
+      width: 280px;
+      border-radius: 18px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h1>Will you be my Valentine? 💘</h1>
+
+    <button id="yesBtn">Yes 💕</button>
+    <button id="noBtn">No 🙄</button>
+
+    <div class="gif-container" id="gifContainer"></div>
+  </div>
+
+  <script>
+  const noBtn = document.getElementById("noBtn");
+  const yesBtn = document.getElementById("yesBtn");
+  const gifContainer = document.getElementById("gifContainer");
+
+  const gifs = [
+    "https://media.giphy.com/media/26FLdmIp6wJr91JAI/giphy.gif",
+    "https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif",
+    "https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif"
+  ];
+
+  /* NO button: invisible force-field (cursor can NEVER reach it) */
+  document.addEventListener("mousemove", (e) => {
+    const btnRect = noBtn.getBoundingClientRect();
+
+    const centerX = btnRect.left + btnRect.width / 2;
+    const centerY = btnRect.top + btnRect.height / 2;
+
+    const distX = e.clientX - centerX;
+    const distY = e.clientY - centerY;
+    const distance = Math.hypot(distX, distY);
+
+    const SAFE_RADIUS = 160; // invisible shield radius
+
+    if (distance < SAFE_RADIUS) {
+      const angle = Math.atan2(distY, distX);
+
+      // Repulsion force (stronger when closer)
+      const force = (SAFE_RADIUS - distance) / SAFE_RADIUS * 60;
+
+      let newLeft = noBtn.offsetLeft - Math.cos(angle) * force;
+      let newTop  = noBtn.offsetTop  - Math.sin(angle) * force;
+
+      // Screen boundaries (can leave card, NOT screen)
+      const margin = 10;
+      newLeft = Math.max(
+        margin,
+        Math.min(window.innerWidth - btnRect.width - margin, newLeft)
+      );
+      newTop = Math.max(
+        margin,
+        Math.min(window.innerHeight - btnRect.height - margin, newTop)
+      );
+
+      noBtn.style.left = `${newLeft}px`;
+      noBtn.style.top  = `${newTop}px`;
+    }
+  });
+
+  /* YES click celebration */
+  yesBtn.addEventListener("click", () => {
+    confetti({
+      particleCount: 220,
+      spread: 130,
+      origin: { x: 0.5, y: 0.1 }
+    });
+
+    const gif = gifs[Math.floor(Math.random() * gifs.length)];
+    gifContainer.innerHTML = `<img src="${gif}">`;
+    gifContainer.style.display = "block";
+
+    document.querySelector("h1").innerText = "YAY!!! 🥰💖";
+    yesBtn.style.display = "none";
+    noBtn.style.display = "none";
+  });
+</script>
+
+</body>
+</html>
