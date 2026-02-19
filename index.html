@@ -1,162 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Will you be my valentine</title>
+    <meta charset="UTF-8">
+    <title>For Tanvi 🤍</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: 'Comic Sans MS', 'Segoe UI', cursive;
-    }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      margin: 0;
-      height: 100vh;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-    }
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            padding: 20px;
+        }
 
-    .card {
-      width: 560px;
-      min-height: 380px;
-      background: white;
-      border-radius: 22px;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.25);
-      padding: 50px 40px;
-      position: relative;
-      text-align: center;
-    }
+        .card {
+            max-width: 800px;
+            width: 100%;
+            background: #ffffff;
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1.5s ease;
+        }
 
-    h1 {
-      font-size: 2.4rem;
-      color: #ff3f6c;
-      margin-bottom: 80px;
-    }
+        .card::before {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle at top right, rgba(255,182,193,0.15), transparent 40%);
+            transform: rotate(25deg);
+        }
 
-    button {
-      padding: 10px 26px;
-      font-size: 1.1rem;
-      border-radius: 40px;
-      border: none;
-      cursor: pointer;
-      position: absolute;
-      transition: transform 0.2s ease, left 0.2s ease, top 0.2s ease;
-    }
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            margin-bottom: 30px;
+            color: #2c2c2c;
+        }
 
-    #yesBtn {
-      background: #db3f63;
-      color: white;
-      left: 170px;
-      top: 240px;
-    }
+        p {
+            margin-bottom: 22px;
+            font-size: 17px;
+            line-height: 1.8;
+            color: #444;
+        }
 
-    #yesBtn:hover {
-      transform: scale(1.3);
-    }
+        .signature {
+            margin-top: 40px;
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            text-align: right;
+            color: #222;
+        }
 
-    #noBtn {
-      background: #f2f2f2;
-      color: #444;
-      left: 320px;
-      top: 240px;
-      pointer-events: none; /* NEVER clickable */
-    }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    .gif-container {
-      display: none;
-      margin-top: 25px;
-    }
-
-    .gif-container img {
-      width: 280px;
-      border-radius: 18px;
-      margin-top: 20px;
-    }
-  </style>
+        @media (max-width: 600px) {
+            .card {
+                padding: 40px 25px;
+            }
+            h1 {
+                font-size: 30px;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <div class="card">
-    <h1>Will you be my Valentine? 💘</h1>
 
-    <button id="yesBtn">Yes 💕</button>
-    <button id="noBtn">No 🙄</button>
+<div class="card">
+    <h1>Hey Tanvi, 🤍</h1>
 
-    <div class="gif-container" id="gifContainer"></div>
-  </div>
+    <p>
+        You met me at a very strange time of my life (not really, just a line from one of my fav movies).
+        Anyways Good morning sunshine🌞 hope you slept well… I just wanted to say hello, and some thoughts dangling in my mind since I met you.
+    </p>
 
-  <script>
-  const noBtn = document.getElementById("noBtn");
-  const yesBtn = document.getElementById("yesBtn");
-  const gifContainer = document.getElementById("gifContainer");
+    <p>
+        Though it’s just been 4 months of knowing you, it’s been a very pleasant ride. You’re pretty, thoughtful, mindful and all the good things, I’m sure yk that. I’m writing this letter because a few words are not enough to describe how beautiful you are😁(that’s why maine jyada tarif nahi ki, har bar essay likhna padta)…
+    </p>
 
-  const gifs = [
-    "https://media.giphy.com/media/26FLdmIp6wJr91JAI/giphy.gif",
-    "https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif",
-    "https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif"
-  ];
+    <p>
+        You’re quite amusing in your own way, the way you giggle, the way you try to roast me(hota to nahi mai but okay), the blush you get when you’re playful, and ahh man the way you dress… so perfectly elegant everytime. Honestly the way you carried every outfit you wore in goa or the wedding, it looked so beautiful and I was always left in awe(again you made me speechless each time you sent a pic, that’s why lack of words yk).
+    </p>
 
-  /* NO button: invisible force-field (cursor can NEVER reach it) */
-  document.addEventListener("mousemove", (e) => {
-    const btnRect = noBtn.getBoundingClientRect();
+    <p>
+        It always makes me smile when you call everyday(more lately 👀), if it were not for our busy schedules I would keep talking to you all day, although I talk very less, but I like to create or talk some bullshit, share a boring story or do anything to look busy(like my daily chores) just to keep looking at you on my screen🤪..(i hate your crappy internet). And I would love to meet you again (n again), create memories (over food) and make you giggle (if it doesn’t affects your life or studies) ..Anyways I think i talked too much, it feels like a goodbye message (it’s not dw🥰). I guess I should sleep now, jaldi so ke apka sapna bhi to dekhna hai😋
+    </p>
 
-    const centerX = btnRect.left + btnRect.width / 2;
-    const centerY = btnRect.top + btnRect.height / 2;
-
-    const distX = e.clientX - centerX;
-    const distY = e.clientY - centerY;
-    const distance = Math.hypot(distX, distY);
-
-    const SAFE_RADIUS = 160; // invisible shield radius
-
-    if (distance < SAFE_RADIUS) {
-      const angle = Math.atan2(distY, distX);
-
-      // Repulsion force (stronger when closer)
-      const force = (SAFE_RADIUS - distance) / SAFE_RADIUS * 60;
-
-      let newLeft = noBtn.offsetLeft - Math.cos(angle) * force;
-      let newTop  = noBtn.offsetTop  - Math.sin(angle) * force;
-
-      // Screen boundaries (can leave card, NOT screen)
-      const margin = 10;
-      newLeft = Math.max(
-        margin,
-        Math.min(window.innerWidth - btnRect.width - margin, newLeft)
-      );
-      newTop = Math.max(
-        margin,
-        Math.min(window.innerHeight - btnRect.height - margin, newTop)
-      );
-
-      noBtn.style.left = `${newLeft}px`;
-      noBtn.style.top  = `${newTop}px`;
-    }
-  });
-
-  /* YES click celebration */
-  yesBtn.addEventListener("click", () => {
-    confetti({
-      particleCount: 220,
-      spread: 130,
-      origin: { x: 0.5, y: 0.1 }
-    });
-
-    const gif = gifs[Math.floor(Math.random() * gifs.length)];
-    gifContainer.innerHTML = `<img src="${gif}">`;
-    gifContainer.style.display = "block";
-
-    document.querySelector("h1").innerText = "YAY!!! 🥰💖";
-    yesBtn.style.display = "none";
-    noBtn.style.display = "none";
-  });
-</script>
+    <div class="signature">
+        —yours truly
+    </div>
+</div>
 
 </body>
 </html>
