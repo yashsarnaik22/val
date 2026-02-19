@@ -1,97 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>For Tanvi 🤍</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>For Tanvi 🤍</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Poppins', sans-serif;
-            padding: 20px;
-        }
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ffe6f0, #fff0f5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
 
-        .card {
-            max-width: 800px;
-            width: 100%;
-            background: #ffffff;
-            padding: 60px 50px;
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-            animation: fadeIn 1.5s ease;
-        }
+/* Glitter background */
+body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background-image: radial-gradient(white 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.2;
+    animation: glitterMove 20s linear infinite;
+    z-index: 0;
+}
 
-        .card::before {
-            content: "";
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            top: -50%;
-            left: -50%;
-            background: radial-gradient(circle at top right, rgba(255,182,193,0.15), transparent 40%);
-            transform: rotate(25deg);
-        }
+@keyframes glitterMove {
+    from { transform: translateY(0); }
+    to { transform: translateY(-200px); }
+}
 
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 38px;
-            margin-bottom: 30px;
-            color: #2c2c2c;
-        }
+/* Floating hearts */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    color: #ff99cc;
+    font-size: 18px;
+    animation: floatUp 10s linear infinite;
+    opacity: 0.6;
+}
 
-        p {
-            margin-bottom: 22px;
-            font-size: 17px;
-            line-height: 1.8;
-            color: #444;
-        }
+@keyframes floatUp {
+    0% { transform: translateY(0) scale(0.8); opacity: 0; }
+    10% { opacity: 0.6; }
+    100% { transform: translateY(-110vh) scale(1.2); opacity: 0; }
+}
 
-        .signature {
-            margin-top: 40px;
-            font-family: 'Playfair Display', serif;
-            font-size: 22px;
-            text-align: right;
-            color: #222;
-        }
+.card {
+    max-width: 850px;
+    width: 90%;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    padding: 60px 50px;
+    border-radius: 25px;
+    box-shadow: 0 20px 60px rgba(255, 105, 180, 0.2);
+    position: relative;
+    z-index: 1;
+    animation: fadeInCard 2s ease;
+}
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+@keyframes fadeInCard {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-        @media (max-width: 600px) {
-            .card {
-                padding: 40px 25px;
-            }
-            h1 {
-                font-size: 30px;
-            }
-        }
-    </style>
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    margin-bottom: 35px;
+    text-align: center;
+    background: linear-gradient(90deg, #ff69b4, #ffb6c1, #ff69b4);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 4s infinite linear;
+}
+
+@keyframes shimmer {
+    0% { background-position: 0%; }
+    100% { background-position: 200%; }
+}
+
+p {
+    margin-bottom: 24px;
+    font-size: 17px;
+    line-height: 1.9;
+    color: #444;
+    opacity: 0;
+    animation: fadeText 1.5s ease forwards;
+}
+
+p:nth-of-type(1) { animation-delay: 1s; }
+p:nth-of-type(2) { animation-delay: 2.5s; }
+p:nth-of-type(3) { animation-delay: 4s; }
+p:nth-of-type(4) { animation-delay: 5.5s; }
+
+@keyframes fadeText {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.signature {
+    margin-top: 50px;
+    text-align: right;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: #d63384;
+    opacity: 0;
+    animation: fadeText 1.5s ease forwards;
+    animation-delay: 7s;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+    .card {
+        padding: 40px 25px;
+    }
+    h1 {
+        font-size: 30px;
+    }
+}
+</style>
 </head>
 <body>
+
+<!-- Floating hearts (subtle) -->
+<div class="heart" style="left:10%; animation-delay:0s;">❤</div>
+<div class="heart" style="left:25%; animation-delay:3s;">❤</div>
+<div class="heart" style="left:40%; animation-delay:6s;">❤</div>
+<div class="heart" style="left:70%; animation-delay:2s;">❤</div>
+<div class="heart" style="left:85%; animation-delay:5s;">❤</div>
 
 <div class="card">
     <h1>Hey Tanvi, 🤍</h1>
