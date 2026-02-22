@@ -14,17 +14,17 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    min-height: 100vh;
     background: linear-gradient(135deg, #ffe6f0, #fff0f5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     font-family: 'Poppins', sans-serif;
     overflow-x: hidden;
 }
 
-/* Glitter background */
+/* Glitter subtle background */
 body::before {
     content: "";
     position: fixed;
@@ -42,44 +42,31 @@ body::before {
     to { transform: translateY(-200px); }
 }
 
-/* Floating hearts */
-.heart {
-    position: fixed;
-    bottom: -20px;
-    color: #ff99cc;
-    font-size: 18px;
-    animation: floatUp 10s linear infinite;
-    opacity: 0.6;
-}
-
-@keyframes floatUp {
-    0% { transform: translateY(0) scale(0.8); opacity: 0; }
-    10% { opacity: 0.6; }
-    100% { transform: translateY(-110vh) scale(1.2); opacity: 0; }
-}
-
-.card {
+/* Main container */
+.container {
     max-width: 850px;
-    width: 90%;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(10px);
-    padding: 60px 50px;
-    border-radius: 25px;
-    box-shadow: 0 20px 60px rgba(255, 105, 180, 0.2);
+    margin: auto;
+    padding: 120px 20px;
     position: relative;
-    z-index: 1;
-    animation: fadeInCard 2s ease;
+    z-index: 2;
 }
 
-@keyframes fadeInCard {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+.section {
+    margin-bottom: 120px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1.2s ease;
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 h1 {
     font-family: 'Playfair Display', serif;
     font-size: 42px;
-    margin-bottom: 35px;
+    margin-bottom: 40px;
     text-align: center;
     background: linear-gradient(90deg, #ff69b4, #ffb6c1, #ff69b4);
     background-size: 200%;
@@ -94,79 +81,119 @@ h1 {
 }
 
 p {
-    margin-bottom: 24px;
-    font-size: 17px;
+    font-size: 18px;
     line-height: 1.9;
     color: #444;
-    opacity: 0;
-    animation: fadeText 1.5s ease forwards;
 }
 
-p:nth-of-type(1) { animation-delay: 1s; }
-p:nth-of-type(2) { animation-delay: 2.5s; }
-p:nth-of-type(3) { animation-delay: 4s; }
-p:nth-of-type(4) { animation-delay: 5.5s; }
-
-@keyframes fadeText {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+/* Floating polaroid images */
+.polaroid {
+    position: absolute;
+    width: 200px;
+    padding: 10px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    transition: transform 0.4s ease;
 }
+
+.polaroid img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.polaroid:hover {
+    transform: scale(1.05) rotate(0deg);
+}
+
+/* Positioning */
+.img1 { top: 150px; left: -120px; transform: rotate(-8deg); }
+.img2 { top: 600px; right: -120px; transform: rotate(6deg); }
+.img3 { top: 1100px; left: -130px; transform: rotate(-5deg); }
 
 .signature {
-    margin-top: 50px;
     text-align: right;
     font-family: 'Playfair Display', serif;
-    font-size: 22px;
+    font-size: 24px;
     color: #d63384;
-    opacity: 0;
-    animation: fadeText 1.5s ease forwards;
-    animation-delay: 7s;
 }
 
-/* Mobile responsiveness */
-@media (max-width: 600px) {
-    .card {
-        padding: 40px 25px;
-    }
-    h1 {
-        font-size: 30px;
+/* Responsive */
+@media (max-width: 1000px) {
+    .polaroid {
+        display: none;
     }
 }
 </style>
 </head>
 <body>
 
-<!-- Floating hearts (subtle) -->
-<div class="heart" style="left:10%; animation-delay:0s;">❤</div>
-<div class="heart" style="left:25%; animation-delay:3s;">❤</div>
-<div class="heart" style="left:40%; animation-delay:6s;">❤</div>
-<div class="heart" style="left:70%; animation-delay:2s;">❤</div>
-<div class="heart" style="left:85%; animation-delay:5s;">❤</div>
+<!-- Floating Images -->
+<div class="polaroid img1">
+    <img src="tanvi1.jpg" alt="Tanvi">
+</div>
 
-<div class="card">
-    <h1>Hey Tanvi, 🤍</h1>
+<div class="polaroid img2">
+    <img src="tanvi2.jpg" alt="Tanvi">
+</div>
 
-    <p>
-        You met me at a very strange time of my life (not really, just a line from one of my fav movies).
-        Anyways Good morning sunshine🌞 hope you slept well… I just wanted to say hello, and some thoughts dangling in my mind since I met you.
-    </p>
+<div class="polaroid img3">
+    <img src="tanvi3.jpg" alt="Tanvi">
+</div>
 
-    <p>
-        Though it’s just been 4 months of knowing you, it’s been a very pleasant ride. You’re pretty, thoughtful, mindful and all the good things, I’m sure yk that. I’m writing this letter because a few words are not enough to describe how beautiful you are😁(that’s why maine jyada tarif nahi ki, har bar essay likhna padta)…
-    </p>
+<div class="container">
 
-    <p>
-        You’re quite amusing in your own way, the way you giggle, the way you try to roast me(hota to nahi mai but okay), the blush you get when you’re playful, and ahh man the way you dress… so perfectly elegant everytime. Honestly the way you carried every outfit you wore in goa or the wedding, it looked so beautiful and I was always left in awe(again you made me speechless each time you sent a pic, that’s why lack of words yk).
-    </p>
+    <div class="section">
+        <h1>Hey Tanvi, 🤍</h1>
+        <p>
+            You met me at a very strange time of my life (not really, just a line from one of my fav movies).
+            Anyways Good morning sunshine🌞 hope you slept well… I just wanted to say hello, and some thoughts dangling in my mind since I met you.
+        </p>
+    </div>
 
-    <p>
-        It always makes me smile when you call everyday(more lately 👀), if it were not for our busy schedules I would keep talking to you all day, although I talk very less, but I like to create or talk some bullshit, share a boring story or do anything to look busy(like my daily chores) just to keep looking at you on my screen🤪..(i hate your crappy internet). And I would love to meet you again (n again), create memories (over food) and make you giggle (if it doesn’t affects your life or studies) ..Anyways I think i talked too much, it feels like a goodbye message (it’s not dw🥰). I guess I should sleep now, jaldi so ke apka sapna bhi to dekhna hai😋
-    </p>
+    <div class="section">
+        <p>
+            Though it’s just been 4 months of knowing you, it’s been a very pleasant ride. You’re pretty, thoughtful, mindful and all the good things, I’m sure yk that. I’m writing this letter because a few words are not enough to describe how beautiful you are😁(that’s why maine jyada tarif nahi ki, har bar essay likhna padta)…
+        </p>
+    </div>
 
-    <div class="signature">
+    <div class="section">
+        <p>
+            You’re quite amusing in your own way, the way you giggle, the way you try to roast me(hota to nahi mai but okay), the blush you get when you’re playful, and ahh man the way you dress… so perfectly elegant everytime. Honestly the way you carried every outfit you wore in goa or the wedding, it looked so beautiful and I was always left in awe(again you made me speechless each time you sent a pic, that’s why lack of words yk).
+        </p>
+    </div>
+
+    <div class="section">
+        <p>
+            It always makes me smile when you call everyday(more lately 👀), if it were not for our busy schedules I would keep talking to you all day, although I talk very less, but I like to create or talk some bullshit, share a boring story or do anything to look busy(like my daily chores) just to keep looking at you on my screen🤪..(i hate your crappy internet). And I would love to meet you again (n again), create memories (over food) and make you giggle (if it doesn’t affects your life or studies) ..Anyways I think i talked too much, it feels like a goodbye message (it’s not dw🥰). I guess I should sleep now, jaldi so ke apka sapna bhi to dekhna hai😋
+        </p>
+    </div>
+
+    <div class="section signature">
         —yours truly
     </div>
+
 </div>
+
+<script>
+/* Scroll reveal effect */
+const sections = document.querySelectorAll('.section');
+
+const revealOnScroll = () => {
+    const triggerBottom = window.innerHeight * 0.85;
+
+    sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+
+        if (sectionTop < triggerBottom) {
+            section.classList.add('visible');
+        }
+    });
+};
+
+window.addEventListener('scroll', revealOnScroll);
+revealOnScroll();
+</script>
 
 </body>
 </html>
